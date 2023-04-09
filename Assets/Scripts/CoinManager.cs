@@ -8,31 +8,23 @@ using TMPro;
 public class CoinManager : MonoBehaviour
 {
     public int NumberOfCoins;
-    [SerializeField] TextMeshProUGUI _text;
-    [SerializeField] GameObject _batton;
+    [SerializeField] private TextMeshProUGUI _text;
+    [SerializeField] private GameObject _batton;
     int _saveNumberOfCoin;
 
     private void Start()
     {
         if (PlayerPrefs.HasKey("_saveNumberOfCoin"))
         {
-
             NumberOfCoins = PlayerPrefs.GetInt("_saveNumberOfCoin");
         }
         _text.text = NumberOfCoins.ToString();
         transform.parent = null;
-
     }
 
     private void Update()
     {
-      
         _text.text = NumberOfCoins.ToString();
-    }
-
-    public void SaveToProgress()
-    {
-        Progress.Instance.PlayerInfo.Coins = NumberOfCoins;
     }
 
     public void ShowAdvButton()

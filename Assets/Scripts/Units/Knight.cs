@@ -18,28 +18,43 @@ public class Knight : Unit
     [SerializeField] private float _attackPeriod;
     [SerializeField] private Animator _animator;
     [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private List<Enemy> EnemyList = new List<Enemy>();
+    [SerializeField] private UnitState CurrentUnitState;
+    [SerializeField] private NavMeshAgent navMeshAgent;
     private float _timer = 0f;
-    public UnitState CurrentUnitState;
-    public NavMeshAgent navMeshAgent;
 
-   public override void Start()
+    public override void Start()
     {
         base.Start();
         SetState(UnitState.WalkToEnemy);
     }
 
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemyComponent))
+        {
+            EnemyList.Add(enemyComponent);
+        }
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemyComponent))
+        {
+            EnemyList.Remove(enemyComponent);
+        }
+    }
+
+
     void Update()
     {
-        FindClosestEnemy();
-        if (CurrentUnitState == UnitState.Idle)
-        {
-            FindClosestEnemy();
-        }
-        else if (CurrentUnitState == UnitState.WalkToEnemy)
+        TargetEnemy = GetClosest(transform.position);
+
+        if (CurrentUnitState == UnitState.WalkToEnemy)
         {
             if (TargetEnemy)
             {
-                FindClosestEnemy();
+                TargetEnemy = GetClosest(transform.position);
                 navMeshAgent.SetDestination(TargetEnemy.transform.position);
                 _animator.SetBool("Run", true);
                 float distance = Vector3.Distance(transform.position, TargetEnemy.transform.position);
@@ -54,76 +69,55 @@ public class Knight : Unit
             _animator.SetTrigger("Attack");
             if (TargetEnemy)
             {
-          //      navMeshAgent.SetDestination(TargetEnemy.transform.position);
-            //    float distance = Vector3.Distance(transform.position, TargetEnemy.transform.position);
-            //    if (distance > _distanceToAttack)
-            //    {
-            //        SetState(UnitState.WalkToEnemy);
-          //     }
                 _timer += Time.deltaTime;
                 if (_timer > _attackPeriod)
                 {
                     _timer = 0;
                     TargetEnemy.TakeDamage(1);
-                 //   _animator.SetTrigger("Attack");
                     _audioSource.pitch = Random.Range(0.8f, 1.2f);
                     _audioSource.Play();
+                    if (TargetEnemy = null)
+                    {
+                        TargetEnemy = GetClosest(transform.position);
+                    }
                 }
             }
-            else
-            {
-                SetState(UnitState.Idle);
-            }
-
-        }
-        else if (CurrentUnitState == UnitState.Die)
-        {
-
         }
     }
 
     public void SetState(UnitState unitState)
     {
-
         CurrentUnitState = unitState;
-        if (CurrentUnitState == UnitState.Idle)
+        TargetEnemy = GetClosest(transform.position);
+
+        if (CurrentUnitState == UnitState.WalkToEnemy)
         {
+            if (TargetEnemy)
+            {
+                TargetEnemy = GetClosest(transform.position);
+                navMeshAgent.SetDestination(TargetEnemy.transform.position);
 
-        }
-        else if (CurrentUnitState == UnitState.WalkToEnemy)
-        {
-            
-            FindClosestEnemy();
-            navMeshAgent.SetDestination(TargetEnemy.transform.position);
-
-        }
-        else if (CurrentUnitState == UnitState.Attack)
-        {
-
-
-        }
-        else if (CurrentUnitState == UnitState.Die)
-        {
-
+            }
         }
     }
 
-    public void FindClosestEnemy()
+    public Enemy GetClosest(Vector3 point)
     {
-        Enemy[] allEnemys = FindObjectsOfType<Enemy>();
-
         float minDistance = Mathf.Infinity;
         Enemy closestEnemy = null;
 
-        for (int i = 0; i < allEnemys.Length; i++)
+        foreach (Enemy go in EnemyList)
         {
-            float distance = Vector3.Distance(transform.position, allEnemys[i].transform.position);
-            if (distance < minDistance)
+            if (go != null)
             {
-                minDistance = distance;
-                closestEnemy = allEnemys[i];
+                float distance = Vector3.Distance(point, go.transform.position);
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                    closestEnemy = go;
+                }
             }
         }
-        TargetEnemy = closestEnemy;
+        return closestEnemy;
     }
 }

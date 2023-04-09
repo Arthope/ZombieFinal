@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Unit : MonoBehaviour
 {
@@ -10,7 +11,14 @@ public class Unit : MonoBehaviour
     [SerializeField] private float _attackDistance;
     [SerializeField] private GameObject _healthBarPrefab;
     [SerializeField] public GameObject _flashPrefab;
+    [SerializeField] private UnityEvent _onDied;
     private HealthBar _healthBar;
+
+    public event UnityAction Died
+    {
+        add => _onDied.AddListener(value);
+        remove => _onDied.RemoveListener(value);
+    }
 
     public void TakeDamage(int damage)
     {
@@ -20,12 +28,12 @@ public class Unit : MonoBehaviour
         {
             Instantiate(_flashPrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            _onDied.Invoke();
         }
     }
 
     public virtual void Start()
-    {
-       
+    {      
         _maxHealth = _health;
         GameObject healthBar = Instantiate(_healthBarPrefab);
         _healthBar = healthBar.GetComponent<HealthBar>();

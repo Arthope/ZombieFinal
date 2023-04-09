@@ -8,23 +8,18 @@ using Agava.YandexGames.Samples;
 
 public class Init : MonoBehaviour
 {
-    public int next;
-
    private void Awake()
    {
        YandexGamesSdk.CallbackLogging = true;
    }
 
-    private IEnumerator Start()
-    {
-      //  if (!YandexGamesSdk.IsInitialized)
-       
-            yield return Agava.YandexGames.YandexGamesSdk.Initialize(OnInitialized);
-    }
+   private IEnumerator Start()
+   {     
+       yield return Agava.YandexGames.YandexGamesSdk.Initialize(OnInitialized);
+   }
 
-    private void OnInitialized()
-    {
-            SceneManager.LoadScene(1);
-
-    }
+   private void OnInitialized()
+   {
+       SceneManager.LoadScene(1);
+   }
 }

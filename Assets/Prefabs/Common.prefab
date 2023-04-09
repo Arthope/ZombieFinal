@@ -978,7 +978,6 @@ RectTransform:
   m_Children:
   - {fileID: 1460617500837522143}
   - {fileID: 1460617500060640512}
-  - {fileID: 1460617500750691483}
   m_Father: {fileID: 1460617499913972435}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1639,14 +1638,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5096f6283f87b442b56e4e50f125e8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _textLevel: {fileID: 0}
+  _menuWin: {fileID: 1460617500837522128}
+  _menulose: {fileID: 1460617500060640513}
   _dice: {fileID: 8034958632943143907}
   Characters:
-  - {fileID: 3035579857477686942, guid: d80defd7221eeef41aae086dab19eeba, type: 3}
-  - {fileID: 7695976324822796646, guid: 91066491d0d001f4ebe006f1832adc4c, type: 3}
-  - {fileID: 8703431505845125346, guid: f1af2facace9f174ba3cf8c9e824c220, type: 3}
-  - {fileID: 6373930462353198017, guid: bd8e7b6f616361149a2637a13c9b307b, type: 3}
-  - {fileID: 8221358457173396647, guid: c24b66739ad5cd94497de4cd16d4db1b, type: 3}
-  - {fileID: 7130049162447067254, guid: 66c165786f1fefa40ad692819aea5dd9, type: 3}
+  - {fileID: 3035579857477686938, guid: d80defd7221eeef41aae086dab19eeba, type: 3}
+  - {fileID: 7809333150727534660, guid: 91066491d0d001f4ebe006f1832adc4c, type: 3}
+  - {fileID: 6595359349442796856, guid: f1af2facace9f174ba3cf8c9e824c220, type: 3}
+  - {fileID: 3913727590491860064, guid: bd8e7b6f616361149a2637a13c9b307b, type: 3}
+  - {fileID: 5313511750890933693, guid: c24b66739ad5cd94497de4cd16d4db1b, type: 3}
+  - {fileID: 992537405972119769, guid: 66c165786f1fefa40ad692819aea5dd9, type: 3}
+  UnitList: []
 --- !u!1 &1460617500093466229
 GameObject:
   m_ObjectHideFlags: 0
@@ -2850,54 +2853,6 @@ MonoBehaviour:
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
---- !u!1 &1460617500750691485
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1460617500750691483}
-  - component: {fileID: 1460617500750691482}
-  m_Layer: 0
-  m_Name: MenuWin
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1460617500750691483
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1460617500750691485}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -199, y: -171.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1460617499603133101}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1460617500750691482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1460617500750691485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa3000adb62c2bc498bbfcb4cc7ad815, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _textLevel: {fileID: 0}
-  _menuWin: {fileID: 1460617500837522128}
-  _menulose: {fileID: 1460617500060640513}
-  _progress: {fileID: 1460617500771270951}
 --- !u!1 &1460617500760155793
 GameObject:
   m_ObjectHideFlags: 0
@@ -3664,7 +3619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0594f46e0e1a7e645a9b13adf4aea498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test: {fileID: 1460617500750691485}
+  test: {fileID: 0}
   _levelText: {fileID: 1460617499365302593}
   _progress: {fileID: 1460617500771270951}
   _coinManager: {fileID: 1460617500387133094}

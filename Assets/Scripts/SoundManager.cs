@@ -24,6 +24,5 @@ public class SoundManager : MonoBehaviour
     {
         AudioListener.volume = value;
         PlayerPrefs.SetFloat("Volume", value);
-
     }
 }

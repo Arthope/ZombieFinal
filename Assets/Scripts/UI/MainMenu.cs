@@ -7,17 +7,12 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     int _currentLevel;
-    public int next;
+    private int next;
 
     public void NextLevel()
     {
         next = SceneManager.GetActiveScene().buildIndex + 1;
         SceneManager.LoadScene(next);
-    }
-
-    public void Exit()
-    {
-        Application.Quit();
     }
 
     public void MainMenuLevel()
