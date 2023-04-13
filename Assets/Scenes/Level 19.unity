@@ -9702,6 +9702,31 @@ PrefabInstance:
       propertyPath: _menuWindow
       value: 
       objectReference: {fileID: 15419037}
+    - target: {fileID: 3916091421602151020, guid: 767bba5ba1dbfe8439a5e3186740e6d7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3916091421602151020, guid: 767bba5ba1dbfe8439a5e3186740e6d7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1774308190}
+    - target: {fileID: 3916091421602151020, guid: 767bba5ba1dbfe8439a5e3186740e6d7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: CreatEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3916091421602151020, guid: 767bba5ba1dbfe8439a5e3186740e6d7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: EnemySpawner, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3916091421602151020, guid: 767bba5ba1dbfe8439a5e3186740e6d7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4435643075217688971, guid: 767bba5ba1dbfe8439a5e3186740e6d7,
         type: 3}
       propertyPath: m_AnchorMax.y

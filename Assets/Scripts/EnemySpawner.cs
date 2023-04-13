@@ -17,7 +17,8 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < _numberEnemy; i++)
         {
             Vector3 _position = new Vector3(Random.Range(-3f, 3f), 0f, Random.Range(4f, -4f));
-            Enemy newEnemy = Instantiate(_enemyPrefab, _position, Quaternion.identity);
+            transform.rotation = Quaternion.Euler(0f, -180f, 0f) * transform.rotation;
+            Enemy newEnemy = Instantiate(_enemyPrefab, _position, transform.rotation);
             newEnemy.DiedEnemy += CountDestroyed;
             EnemyList.Add(newEnemy);
         }
