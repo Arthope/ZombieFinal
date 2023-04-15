@@ -43,9 +43,10 @@ public class Shop : MonoBehaviour
 
     public void BueGirl()
     {
-        if (_coinManager.NumberOfCoins >= priceGirl)
+        Debug.Log("купил женщину");
+        if (_coinManager.NumberOfCoins >= 120)
         {
-            _coinManager.NumberOfCoins -= priceGirl;
+            _coinManager.NumberOfCoins -= 120;
             PlayerPrefs.SetInt("numberGirl", 1);
             PlayerPrefs.SetInt("Characters", 1);
             Destroy(_buttonChartersGirl);
@@ -55,9 +56,9 @@ public class Shop : MonoBehaviour
 
     public void BueBoy()
     {
-        if (_coinManager.NumberOfCoins >= priceBoy)
+        if (_coinManager.NumberOfCoins >= 240)
         {
-            _coinManager.NumberOfCoins -= priceBoy;
+            _coinManager.NumberOfCoins -= 240;
             PlayerPrefs.SetInt("numberBoy", 2);
             PlayerPrefs.SetInt("Characters", 2);
             Destroy(_buttonChartersBoy);
