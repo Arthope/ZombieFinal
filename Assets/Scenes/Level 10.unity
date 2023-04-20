@@ -1035,7 +1035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2784ba32ff8f1c447a204496088f7382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textLevel: {fileID: 0}
+  _textLevel: {fileID: 949558120}
   _menuWin: {fileID: 1460617501146655129}
   _menulose: {fileID: 1460617501146655128}
   _numberEnemy: 10
@@ -3582,7 +3582,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _textLevel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 949558120}
     - target: {fileID: 1460617500483557007, guid: 767bba5ba1dbfe8439a5e3186740e6d7,
         type: 3}
       propertyPath: m_AnchorMax.y

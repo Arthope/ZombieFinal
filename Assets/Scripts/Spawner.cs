@@ -14,6 +14,11 @@ public class Spawner : MonoBehaviour
     [SerializeField] private List<Unit> Characters;
     [SerializeField] private List<Unit> UnitList = new List<Unit>();
     private int numberCharters;
+    private float coordinateMinimalX = -3f;
+    private float coordinateMaximalX = 3f;
+    private float coordinateY = 0f;
+    private float coordinateMinimalZ = -9f;
+    private float coordinateMaximalZ = -11f;
 
     private int _charaterId;
     public void CreatCharacter()
@@ -23,7 +28,7 @@ public class Spawner : MonoBehaviour
 
         for (int i = 0; i < numberCharters; i++)
         {
-            Vector3 _position = new Vector3(Random.Range(-3f, 3f), 0f, Random.Range(-13f, -11f));
+            Vector3 _position = new Vector3(Random.Range(coordinateMinimalX, coordinateMaximalX), coordinateY, Random.Range(coordinateMinimalZ, coordinateMaximalZ));
             Unit newUnit = Instantiate(Characters[_charaterId], _position, Quaternion.identity);
             newUnit.Died += CountDestroyed;
             UnitList.Add(newUnit);
