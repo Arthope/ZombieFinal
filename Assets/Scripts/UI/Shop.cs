@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Shop : MonoBehaviour
 {
     [SerializeField] private CoinDispley _coinDispley;
+    [SerializeField] private TextMeshProUGUI _textCoins;
     [SerializeField] private GameObject _buttonChartersGirl;
     [SerializeField] private GameObject _buttonChartersBoy;
     [SerializeField] private GameObject _buttonChartersPolice;
@@ -60,7 +62,8 @@ public class Shop : MonoBehaviour
             PlayerPrefs.SetInt("Characters", numberCharters);
             Destroy(ButtonUnit);
             PlayerPrefs.Save();
-            _coinDispley.UpdateCoins();
+            _textCoins.text = _currentCountCoinsPlayers.ToString();
+
         }
     }
 

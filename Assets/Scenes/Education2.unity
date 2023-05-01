@@ -1000,7 +1000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0594f46e0e1a7e645a9b13adf4aea498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelText: {fileID: 0}
+  _levelText: {fileID: 551938123}
   _coinDispley: {fileID: 1406922545}
 --- !u!4 &126748891
 Transform:
@@ -1516,7 +1516,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -40, y: -25}
-  m_SizeDelta: {x: 276.92, y: 110}
+  m_SizeDelta: {x: 300.325, y: 110}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &223007789
 MonoBehaviour:
@@ -2020,6 +2020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _coinDispley: {fileID: 1406922545}
+  _textCoins: {fileID: 655921850}
   _buttonChartersGirl: {fileID: 7609255656795583516}
   _buttonChartersBoy: {fileID: 2931956769857132443}
   _buttonChartersPolice: {fileID: 3902235111010757766}

@@ -981,6 +981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _coinDispley: {fileID: 1406922545}
+  _textCoins: {fileID: 655921850}
   _buttonChartersGirl: {fileID: 421857374896866259}
   _buttonChartersBoy: {fileID: 3268030852161696265}
   _buttonChartersPolice: {fileID: 5096420008148921867}

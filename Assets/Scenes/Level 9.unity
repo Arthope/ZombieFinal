@@ -905,7 +905,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6cdc6b6aa562694dae63ad35659c6cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coinDispley: {fileID: 0}
+  _coinDispley: {fileID: 1406922545}
+  _textCoins: {fileID: 655921850}
   _buttonChartersGirl: {fileID: 421857374896866259}
   _buttonChartersBoy: {fileID: 3268030852161696265}
   _buttonChartersPolice: {fileID: 5096420008148921867}
