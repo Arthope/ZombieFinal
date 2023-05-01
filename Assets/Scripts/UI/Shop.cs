@@ -54,7 +54,8 @@ public class Shop : MonoBehaviour
     {
         if (_currentCountCoinsPlayers >= PriceUnit)
         {
-            PlayerPrefs.SetInt("_saveNumberOfCoin", _currentCountCoinsPlayers -= PriceUnit);
+            _currentCountCoinsPlayers -= PriceUnit;
+            PlayerPrefs.SetInt("_saveNumberOfCoin", _currentCountCoinsPlayers);
             PlayerPrefs.SetInt(name, numberCharters);
             PlayerPrefs.SetInt("Characters", numberCharters);
             Destroy(ButtonUnit);
