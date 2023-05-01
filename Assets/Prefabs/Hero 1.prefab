@@ -1319,17 +1319,15 @@ MonoBehaviour:
   _onDied:
     m_PersistentCalls:
       m_Calls: []
-  TargetEnemy: {fileID: 0}
+  _targetEnemy: {fileID: 0}
   _distanceToAttack: 1000000
   _attackPeriod: 0.6
   _animator: {fileID: 5192943003491908480}
   _audioSource: {fileID: 3147254659904444137}
   _flash: {fileID: 614246003829293796}
-  navMeshAgent: {fileID: 5017348412965106321}
-  _center: {fileID: 0}
-  EnemyList: []
-  allEnemys: []
-  CurrentUnitState: 0
+  _navMeshAgent: {fileID: 5017348412965106321}
+  _enemyList: []
+  _currentUnitState: 0
 --- !u!195 &5017348412965106321
 NavMeshAgent:
   m_ObjectHideFlags: 0

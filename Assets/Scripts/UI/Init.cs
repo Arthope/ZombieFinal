@@ -8,6 +8,8 @@ using Agava.YandexGames.Samples;
 
 public class Init : MonoBehaviour
 {
+   private int _menuSceneNumber = 1;
+   
    private void Awake()
    {
        YandexGamesSdk.CallbackLogging = true;
@@ -20,6 +22,6 @@ public class Init : MonoBehaviour
 
    private void OnInitialized()
    {
-       SceneManager.LoadScene(1);
+       SceneManager.LoadScene(_menuSceneNumber);
    }
 }

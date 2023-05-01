@@ -203,14 +203,14 @@ MonoBehaviour:
   _onDied:
     m_PersistentCalls:
       m_Calls: []
-  TargetEnemy: {fileID: 0}
+  _targetEnemy: {fileID: 0}
   _distanceToAttack: 2
   _attackPeriod: 1
   _animator: {fileID: 240907184287339057}
   _audioSource: {fileID: 6074220803942265119}
-  EnemyList: []
-  CurrentUnitState: 0
-  navMeshAgent: {fileID: 6497069727978756265}
+  _enemyList: []
+  _currentUnitState: 0
+  _navMeshAgent: {fileID: 6497069727978756265}
 --- !u!195 &6497069727978756265
 NavMeshAgent:
   m_ObjectHideFlags: 0

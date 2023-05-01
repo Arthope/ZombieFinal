@@ -5,17 +5,26 @@ using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
-    [SerializeField] CoinManager _coinManager;
-    [SerializeField] GameObject _buttonChartersGirl;
-    [SerializeField] GameObject _buttonChartersBoy;
-    [SerializeField] GameObject _buttonChartersPolice;
-    [SerializeField] GameObject _buttonChartersSolder;
-    [SerializeField] GameObject _buttonChartersHero;
-    private int priceGirl = 120;
-    private int priceBoy = 240;
-    private int pricePolice = 350;
-    private int priceSolder= 500;
-    private int priceHero = 700;
+    [SerializeField] private CoinDispley _coinDispley;
+    [SerializeField] private GameObject _buttonChartersGirl;
+    [SerializeField] private GameObject _buttonChartersBoy;
+    [SerializeField] private GameObject _buttonChartersPolice;
+    [SerializeField] private GameObject _buttonChartersSolder;
+    [SerializeField] private GameObject _buttonChartersHero;
+    private int _priceGirl = 120;
+    private int _priceBoy = 240;
+    private int _pricePolice = 350;
+    private int _priceSolder= 500;
+    private int _priceHero = 700;
+    private int _currentCountCoinsPlayers = 0;
+
+    private void Awake()
+    {
+        if (PlayerPrefs.HasKey("_saveNumberOfCoin"))
+        {
+            _currentCountCoinsPlayers = PlayerPrefs.GetInt("_saveNumberOfCoin");
+        }
+    }
 
     private void Start()
     {
@@ -41,65 +50,46 @@ public class Shop : MonoBehaviour
         }
     }
 
+    public void BueUnit(int PriceUnit, GameObject ButtonUnit, int numberCharters)
+    {
+        if (_currentCountCoinsPlayers >= PriceUnit)
+        {
+            PlayerPrefs.SetInt("_saveNumberOfCoin", _currentCountCoinsPlayers -= PriceUnit);
+            PlayerPrefs.SetInt(name, numberCharters);
+            PlayerPrefs.SetInt("Characters", numberCharters);
+            Destroy(ButtonUnit);
+            PlayerPrefs.Save();
+            _coinDispley.UpdateCoins();
+        }
+    }
+
     public void BueGirl()
     {
-        Debug.Log("купил женщину");
-        if (_coinManager.NumberOfCoins >= 120)
-        {
-            _coinManager.NumberOfCoins -= 120;
-            PlayerPrefs.SetInt("numberGirl", 1);
-            PlayerPrefs.SetInt("Characters", 1);
-            Destroy(_buttonChartersGirl);
-            PlayerPrefs.Save();
-        }
+        BueUnit(_priceGirl, _buttonChartersGirl, 1);
+        PlayerPrefs.SetInt("numberGirl", 1);
     }
 
     public void BueBoy()
     {
-        if (_coinManager.NumberOfCoins >= 240)
-        {
-            _coinManager.NumberOfCoins -= 240;
-            PlayerPrefs.SetInt("numberBoy", 2);
-            PlayerPrefs.SetInt("Characters", 2);
-            Destroy(_buttonChartersBoy);
-            PlayerPrefs.Save();
-
-        }
+        BueUnit(_priceBoy, _buttonChartersBoy, 2);
+        PlayerPrefs.SetInt("numberBoy", 2);
     }
 
     public void BuePolice()
     {
-        if (_coinManager.NumberOfCoins >= pricePolice)
-        {
-            _coinManager.NumberOfCoins -= pricePolice;
-            PlayerPrefs.SetInt("numberPolice", 3);
-            PlayerPrefs.SetInt("Characters", 3);
-            Destroy(_buttonChartersPolice);
-            PlayerPrefs.Save();
-        }
+        BueUnit(_pricePolice, _buttonChartersPolice, 3);
+        PlayerPrefs.SetInt("numberPolice", 3);
     }
 
     public void BueSolder()
     {
-        if (_coinManager.NumberOfCoins >= priceSolder)
-        {
-            _coinManager.NumberOfCoins -= priceSolder;
-            PlayerPrefs.SetInt("numberSolder", 4);
-            PlayerPrefs.SetInt("Characters", 4);
-            Destroy(_buttonChartersSolder);
-            PlayerPrefs.Save();
-        }
+        BueUnit(_priceSolder, _buttonChartersSolder, 4);
+        PlayerPrefs.SetInt("numberSolder", 4);
     }
 
     public void BueHero()
     {
-        if (_coinManager.NumberOfCoins >= priceHero)
-        {
-            PlayerPrefs.Save();
-            _coinManager.NumberOfCoins -= priceHero;
-            PlayerPrefs.SetInt("numberHero", 5);
-            PlayerPrefs.SetInt("Characters", 5);
-            Destroy(_buttonChartersHero);
-        }
+        BueUnit(_priceHero, _buttonChartersHero, 5);
+        PlayerPrefs.SetInt("numberHero", 5);
     }  
 }

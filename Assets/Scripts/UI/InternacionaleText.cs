@@ -7,8 +7,8 @@ using Lean.Localization;
 
 public class InternacionaleText : MonoBehaviour
 {
-    [SerializeField] string _en;
-    [SerializeField] string _ru;
+    [SerializeField] private string _en;
+    [SerializeField] private string _ru;
 
     private IEnumerator Start()
     {

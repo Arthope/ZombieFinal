@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Education : MonoBehaviour
 {
-    [SerializeField] GameObject _gameObjectOn;
-    [SerializeField] GameObject _gameObjectOff;
+    [SerializeField] private GameObject _secondEducationOn;
+    [SerializeField] private GameObject _firstEducatuonOff;
 
     public void EducationOn()
     {
-        _gameObjectOn.SetActive(true);
+        _secondEducationOn.SetActive(true);
     }
 
     public void EducationOff()
     {
-        _gameObjectOff.SetActive(false);
+        _firstEducatuonOff.SetActive(false);
     }
 }

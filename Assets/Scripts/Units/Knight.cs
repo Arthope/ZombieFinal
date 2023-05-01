@@ -13,14 +13,14 @@ public enum UnitState
 
 public class Knight : Unit
 {
-    [SerializeField] private Enemy TargetEnemy;
+    [SerializeField] private Enemy _targetEnemy;
     [SerializeField] private float _distanceToAttack;
     [SerializeField] private float _attackPeriod;
     [SerializeField] private Animator _animator;
     [SerializeField] private AudioSource _audioSource;
-    [SerializeField] private List<Enemy> EnemyList = new List<Enemy>();
-    [SerializeField] private UnitState CurrentUnitState;
-    [SerializeField] private NavMeshAgent navMeshAgent;
+    [SerializeField] private List<Enemy> _enemyList = new List<Enemy>();
+    [SerializeField] private UnitState _currentUnitState;
+    [SerializeField] private NavMeshAgent _navMeshAgent;
     private float _timer = 0f;
 
     public override void Start()
@@ -33,7 +33,7 @@ public class Knight : Unit
     {
         if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemyComponent))
         {
-            EnemyList.Add(enemyComponent);
+            _enemyList.Add(enemyComponent);
         }
     }
 
@@ -41,44 +41,44 @@ public class Knight : Unit
     {
         if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemyComponent))
         {
-            EnemyList.Remove(enemyComponent);
+            _enemyList.Remove(enemyComponent);
         }
     }
 
 
     void Update()
     {
-        TargetEnemy = GetClosest(transform.position);
+        _targetEnemy = GetClosest(transform.position);
 
-        if (CurrentUnitState == UnitState.WalkToEnemy)
+        if (_currentUnitState == UnitState.WalkToEnemy)
         {
-            if (TargetEnemy)
+            if (_targetEnemy)
             {
-                TargetEnemy = GetClosest(transform.position);
-                navMeshAgent.SetDestination(TargetEnemy.transform.position);
+                _targetEnemy = GetClosest(transform.position);
+                _navMeshAgent.SetDestination(_targetEnemy.transform.position);
                 _animator.SetBool("Run", true);
-                float distance = Vector3.Distance(transform.position, TargetEnemy.transform.position);
+                float distance = Vector3.Distance(transform.position, _targetEnemy.transform.position);
                 if (distance <= _distanceToAttack)
                 {
                     SetState(UnitState.Attack);
                 }
             }
         }
-        else if (CurrentUnitState == UnitState.Attack)
+        else if (_currentUnitState == UnitState.Attack)
         {
             _animator.SetTrigger("Attack");
-            if (TargetEnemy)
+            if (_targetEnemy)
             {
                 _timer += Time.deltaTime;
                 if (_timer > _attackPeriod)
                 {
                     _timer = 0;
-                    TargetEnemy.TakeDamage(1);
+                    _targetEnemy.TakeDamage(1);
                     _audioSource.pitch = Random.Range(0.8f, 1.2f);
                     _audioSource.Play();
-                    if (TargetEnemy = null)
+                    if (_targetEnemy = null)
                     {
-                        TargetEnemy = GetClosest(transform.position);
+                        _targetEnemy = GetClosest(transform.position);
                     }
                 }
             }
@@ -87,15 +87,15 @@ public class Knight : Unit
 
     public void SetState(UnitState unitState)
     {
-        CurrentUnitState = unitState;
-        TargetEnemy = GetClosest(transform.position);
+        _currentUnitState = unitState;
+        _targetEnemy = GetClosest(transform.position);
 
-        if (CurrentUnitState == UnitState.WalkToEnemy)
+        if (_currentUnitState == UnitState.WalkToEnemy)
         {
-            if (TargetEnemy)
+            if (_targetEnemy)
             {
-                TargetEnemy = GetClosest(transform.position);
-                navMeshAgent.SetDestination(TargetEnemy.transform.position);
+                _targetEnemy = GetClosest(transform.position);
+                _navMeshAgent.SetDestination(_targetEnemy.transform.position);
 
             }
         }
@@ -106,7 +106,7 @@ public class Knight : Unit
         float minDistance = Mathf.Infinity;
         Enemy closestEnemy = null;
 
-        foreach (Enemy go in EnemyList)
+        foreach (Enemy go in _enemyList)
         {
             if (go != null)
             {

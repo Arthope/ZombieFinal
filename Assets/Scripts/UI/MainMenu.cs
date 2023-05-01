@@ -6,13 +6,13 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    int _currentLevel;
-    private int next;
+    private int _currentLevel;
+    private int _nextLevel;
 
     public void NextLevel()
     {
-        next = SceneManager.GetActiveScene().buildIndex + 1;
-        SceneManager.LoadScene(next);
+        _nextLevel = SceneManager.GetActiveScene().buildIndex + 1;
+        SceneManager.LoadScene(_nextLevel);
     }
 
     public void MainMenuLevel()
@@ -24,8 +24,8 @@ public class MainMenu : MonoBehaviour
         }
         else
         {
-            next = SceneManager.GetActiveScene().buildIndex + 1;
-            SceneManager.LoadScene(next);
+            _nextLevel = SceneManager.GetActiveScene().buildIndex + 1;
+            SceneManager.LoadScene(_nextLevel);
         }
     }
 }

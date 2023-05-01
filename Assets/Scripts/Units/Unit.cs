@@ -5,12 +5,12 @@ using UnityEngine.Events;
 
 public class Unit : MonoBehaviour
 {
-    [SerializeField] public int _health;
-    [SerializeField] public int _maxHealth;
+    [SerializeField] private int _health;
+    [SerializeField] private int _maxHealth;
     [SerializeField] private int _damageValue;
     [SerializeField] private float _attackDistance;
     [SerializeField] private GameObject _healthBarPrefab;
-    [SerializeField] public GameObject _flashPrefab;
+    [SerializeField] private GameObject _flashPrefab;
     [SerializeField] private UnityEvent _onDied;
     private HealthBar _healthBar;
 

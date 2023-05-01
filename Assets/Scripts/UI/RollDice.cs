@@ -5,13 +5,15 @@ using UnityEngine.UI;
 
 public class RollDice : MonoBehaviour
 {
-    public int Number;
-    [SerializeField] private Image image;
-    [SerializeField] private Sprite[] sprites;
+    [SerializeField] private int _number;
+    [SerializeField] private Image _image;
+    [SerializeField] private Sprite[] _sprites;
+
+    public int Number => _number;
 
     public void RollNumber()
     {
-        Number = Random.Range(0, sprites.Length);
-        image.sprite = sprites[Number];
+        _number = Random.Range(0, _sprites.Length);
+        _image.sprite = _sprites[_number];
     }
 }

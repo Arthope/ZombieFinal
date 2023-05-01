@@ -10,7 +10,6 @@ public class DataSarver : MonoBehaviour
 
     public void SaveInt()
     {
-             PlayerPrefs.SetInt(_objectName, _id);
-      
+         PlayerPrefs.SetInt(_objectName, _id);   
     }
 }

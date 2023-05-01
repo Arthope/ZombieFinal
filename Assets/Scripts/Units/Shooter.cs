@@ -13,18 +13,16 @@ public enum ShootState
 
 public class Shooter : Unit
 {
-    [SerializeField] private Enemy TargetEnemy;
+    [SerializeField] private Enemy _targetEnemy;
     [SerializeField] private float _distanceToAttack;
     [SerializeField] private float _attackPeriod;
     [SerializeField] private Animator _animator;
     [SerializeField] private AudioSource _audioSource;
-    [SerializeField] GameObject _flash;
-    [SerializeField] private NavMeshAgent navMeshAgent;
-    [SerializeField] private GameObject _center;
-    [SerializeField] List<Enemy> EnemyList = new List<Enemy>();
-    public Enemy[] allEnemys;
+    [SerializeField] private GameObject _flash;
+    [SerializeField] private NavMeshAgent _navMeshAgent;
+    [SerializeField] private List<Enemy> _enemyList = new List<Enemy>();
+    [SerializeField] private ShootState _currentUnitState;
     private float _timer = 0f;
-    public ShootState CurrentUnitState;
 
     public override void Start()
     {
@@ -36,7 +34,7 @@ public class Shooter : Unit
     {
         if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemyComponent))
         {
-            EnemyList.Add(enemyComponent);
+            _enemyList.Add(enemyComponent);
         }
     }
 
@@ -44,31 +42,31 @@ public class Shooter : Unit
     {
         if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemyComponent))
         {
-            EnemyList.Remove(enemyComponent);
+            _enemyList.Remove(enemyComponent);
         }
     }
 
-    void Update()
+    private void Update()
     {
-        TargetEnemy = GetClosest(transform.position);
+        _targetEnemy = GetClosest(transform.position);
 
-        if (CurrentUnitState == ShootState.WalkToEnemy)
+        if (_currentUnitState == ShootState.WalkToEnemy)
         {
-            if (TargetEnemy)
+            if (_targetEnemy)
             {
-                TargetEnemy = GetClosest(transform.position);
-                float distance = Vector3.Distance(transform.position, TargetEnemy.transform.position);
+                _targetEnemy = GetClosest(transform.position);
+                float distance = Vector3.Distance(transform.position, _targetEnemy.transform.position);
                 if (distance < _distanceToAttack)
                 {
                     SetState(ShootState.Attack);
                 }
             }
         }
-        else if (CurrentUnitState == ShootState.Attack)
+        else if (_currentUnitState == ShootState.Attack)
         {
-            if (TargetEnemy)
+            if (_targetEnemy)
             {
-                float distance = Vector3.Distance(transform.position, TargetEnemy.transform.position);
+                float distance = Vector3.Distance(transform.position, _targetEnemy.transform.position);
                 if (distance > _distanceToAttack)
                 {
                     SetState(ShootState.WalkToEnemy);
@@ -77,7 +75,7 @@ public class Shooter : Unit
                 if (_timer > _attackPeriod)
                 {
                     _timer = 0;
-                    TargetEnemy.TakeDamage(1);
+                    _targetEnemy.TakeDamage(1);
                     _audioSource.pitch = Random.Range(0.8f, 1.2f);
                     _audioSource.Play();
                     _flash.SetActive(true);
@@ -86,24 +84,24 @@ public class Shooter : Unit
             }
             else
             {
-                TargetEnemy = GetClosest(transform.position);
+                _targetEnemy = GetClosest(transform.position);
                 SetState(ShootState.Idle);
             }
         }
-        if (TargetEnemy)
+        if (_targetEnemy)
         {
-            transform.LookAt(TargetEnemy.transform.position);
+            transform.LookAt(_targetEnemy.transform.position);
         }
     }
 
     public void SetState(ShootState unitState)
     {
-        CurrentUnitState = unitState;
-        TargetEnemy = GetClosest(transform.position);
+        _currentUnitState = unitState;
+        _targetEnemy = GetClosest(transform.position);
 
-        if (CurrentUnitState == ShootState.WalkToEnemy)
+        if (_currentUnitState == ShootState.WalkToEnemy)
         {
-            TargetEnemy = GetClosest(transform.position);
+            _targetEnemy = GetClosest(transform.position);
         }
 
     }
@@ -113,7 +111,7 @@ public class Shooter : Unit
         float minDistance = Mathf.Infinity;
         Enemy closestEnemy = null;
 
-        foreach (Enemy go in EnemyList)
+        foreach (Enemy go in _enemyList)
         {
             if (go != null)
             {

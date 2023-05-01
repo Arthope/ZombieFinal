@@ -4,11 +4,9 @@ using UnityEngine;
 using System.Runtime.InteropServices;
 using TMPro;
 using Agava.YandexGames;
-using Lean.Localization;
 
 public class Language : MonoBehaviour
-{
-    
+{   
     public static Language Instance;
     public string CurrentLanguage;
 

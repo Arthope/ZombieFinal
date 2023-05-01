@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class HealthBar : MonoBehaviour
 {
-    [SerializeField] Transform _scaleTransform;
-    [SerializeField] Transform _target;
+    [SerializeField] private Transform _scaleTransform;
+    [SerializeField] private Transform _target;
     private Transform _cameraTransform;
+    private float _yScale = 1f;
+    private float _zScale = 1f;
+    private float _heightHealthBar = 2f;
+    private float _xScale;
 
     private void Start()
     {
@@ -15,7 +19,7 @@ public class HealthBar : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.position = _target.position + Vector3.up * 2f;
+        transform.position = _target.position + Vector3.up * _heightHealthBar;
         transform.rotation = _cameraTransform.rotation;
     }
 
@@ -26,8 +30,8 @@ public class HealthBar : MonoBehaviour
 
     public void SetHealth(int health, int maxHealth)
     {
-        float xScale = (float)health / maxHealth;
-        xScale = Mathf.Clamp01(xScale);
-        _scaleTransform.localScale = new Vector3(xScale, 1f, 1f);
+        _xScale = (float)health / maxHealth;
+        _xScale = Mathf.Clamp01(_xScale);
+        _scaleTransform.localScale = new Vector3(_xScale, _yScale, _zScale);
     }
 }

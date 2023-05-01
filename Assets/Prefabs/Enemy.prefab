@@ -179,7 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 5
   _maxHealth: 5
-  TargetUnit: {fileID: 0}
+  _targetUnit: {fileID: 0}
   _distanceToAttack: 3
   _attackPeriod: 1
   _healthBarPrefab: {fileID: 7384518421972863371, guid: b2ea0da7e8716a04992bf5caea5fb577,
@@ -187,12 +187,12 @@ MonoBehaviour:
   _animator: {fileID: 732951453178373172}
   _flash: {fileID: 1602197966606650, guid: 639ffe8a2dcaab14fa53988d89810e9d, type: 3}
   _audioSource: {fileID: 128552532376176417}
-  navMeshAgent: {fileID: 128552532449869394}
-  CurrentEnemyState: 0
+  _navMeshAgent: {fileID: 128552532449869394}
+  _currentEnemyState: 0
   _onDied:
     m_PersistentCalls:
       m_Calls: []
-  Units: []
+  _units: []
 --- !u!195 &128552532449869394
 NavMeshAgent:
   m_ObjectHideFlags: 0

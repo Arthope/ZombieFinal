@@ -16,17 +16,17 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private int _health;
     [SerializeField] private int _maxHealth;
-    [SerializeField] private Unit TargetUnit;
+    [SerializeField] private Unit _targetUnit;
     [SerializeField] private float _distanceToAttack;
     [SerializeField] private float _attackPeriod;
     [SerializeField] private GameObject _healthBarPrefab;
     [SerializeField] private Animator _animator;
     [SerializeField] private GameObject _flash;
     [SerializeField] private AudioSource _audioSource;
-    [SerializeField] private NavMeshAgent navMeshAgent;
-    [SerializeField] private EnemyState CurrentEnemyState;
+    [SerializeField] private NavMeshAgent _navMeshAgent;
+    [SerializeField] private EnemyState _currentEnemyState;
     [SerializeField] private UnityEvent _onDied;
-    [SerializeField] private List<Unit> Units;
+    [SerializeField] private List<Unit> _units;
     private float _timer = 0f;
     private HealthBar _healthBar;
 
@@ -49,7 +49,7 @@ public class Enemy : MonoBehaviour
     {
         if (collider.gameObject.TryGetComponent<Unit>(out Unit unitComponent))
         {
-            Units.Add(unitComponent);
+            _units.Add(unitComponent);
         }
     }
 
@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour
     {
         if (collider.gameObject.TryGetComponent<Unit>(out Unit unitComponent))
         {
-            Units.Remove(unitComponent);
+            _units.Remove(unitComponent);
         }
     }
 
@@ -69,7 +69,7 @@ public class Enemy : MonoBehaviour
         {
           Instantiate(_flash, transform.position, Quaternion.identity);
           Destroy(gameObject);
-          _onDied.Invoke();
+     //     _onDied.Invoke();
         }
     }
 
@@ -78,20 +78,21 @@ public class Enemy : MonoBehaviour
         if (_healthBar)
         {
             Destroy(_healthBar.gameObject);
+            _onDied.Invoke();
         }
     }
 
     void Update()
     {
-        TargetUnit = GetClosest(transform.position);
+        _targetUnit = GetClosest(transform.position);
 
-        if (CurrentEnemyState == EnemyState.WalkToUnit)
+        if (_currentEnemyState == EnemyState.WalkToUnit)
         {
-            if (TargetUnit)
+            if (_targetUnit)
             {
                 _audioSource.Play();
-                navMeshAgent.SetDestination(TargetUnit.transform.position);
-                float distance = Vector3.Distance(transform.position, TargetUnit.transform.position);
+                _navMeshAgent.SetDestination(_targetUnit.transform.position);
+                float distance = Vector3.Distance(transform.position, _targetUnit.transform.position);
                 _animator.SetBool("Run", true);
                 if (distance < _distanceToAttack)
                 {
@@ -99,22 +100,17 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
-        else if (CurrentEnemyState == EnemyState.Attack)
+        else if (_currentEnemyState == EnemyState.Attack)
         {
             _animator.SetTrigger("Attack");
-            if (TargetUnit)
+            if (_targetUnit)
             {
                 _timer += Time.deltaTime;
                 if (_timer > _attackPeriod)
                 {
-                    if (TargetUnit._health == 0)
-                    {
-                        TargetUnit = null;
-                    }
-                    else
                     {
                         _timer = 0;
-                        TargetUnit.TakeDamage(1);
+                        _targetUnit.TakeDamage(1);
                     }
                 }
             }
@@ -123,15 +119,15 @@ public class Enemy : MonoBehaviour
 
     public void SetState(EnemyState enemyState)
     {
-        CurrentEnemyState = enemyState;
+        _currentEnemyState = enemyState;
 
-        if (CurrentEnemyState == EnemyState.WalkToUnit)
+        if (_currentEnemyState == EnemyState.WalkToUnit)
         {
-            TargetUnit = GetClosest(transform.position);
-            if (TargetUnit)
+            _targetUnit = GetClosest(transform.position);
+            if (_targetUnit)
             {
-                TargetUnit = GetClosest(transform.position);
-                navMeshAgent.SetDestination(TargetUnit.transform.position);
+                _targetUnit = GetClosest(transform.position);
+                _navMeshAgent.SetDestination(_targetUnit.transform.position);
                 _audioSource.Play();
             }
         }
@@ -142,7 +138,7 @@ public class Enemy : MonoBehaviour
         float minDistance = Mathf.Infinity;
         Unit closestUnit = null;
 
-        foreach (Unit go in Units)
+        foreach (Unit go in _units)
         {
             if (go != null)
             {
