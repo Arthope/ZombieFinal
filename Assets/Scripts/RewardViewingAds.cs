@@ -5,6 +5,7 @@ using TMPro;
 
 public class RewardViewingAds : MonoBehaviour
 {
+    private const string SaveNumberOfCoin = "_saveNumberOfCoin";
     [SerializeField] private TextMeshProUGUI _textCoins;
     [SerializeField] private GameObject _buttonShowAdv;
     private int _rewardViewingAds = 50;
@@ -12,9 +13,9 @@ public class RewardViewingAds : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.HasKey("_saveNumberOfCoin"))
+        if (PlayerPrefs.HasKey(SaveNumberOfCoin))
         {
-            _numberOfCoins = PlayerPrefs.GetInt("_saveNumberOfCoin");
+            _numberOfCoins = PlayerPrefs.GetInt(SaveNumberOfCoin);
         }
     }
 
@@ -22,8 +23,9 @@ public class RewardViewingAds : MonoBehaviour
     {
         Agava.YandexGames.VideoAd.Show();
         _numberOfCoins += _rewardViewingAds;
-        PlayerPrefs.SetInt("_saveNumberOfCoin", _numberOfCoins);
+        PlayerPrefs.SetInt(SaveNumberOfCoin, _numberOfCoins);
         _textCoins.text = _numberOfCoins.ToString();
         _buttonShowAdv.SetActive(false);
+        PlayerPrefs.Save();
     }
 }

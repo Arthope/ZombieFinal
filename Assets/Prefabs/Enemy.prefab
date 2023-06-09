@@ -177,22 +177,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbec1900eef35dd4091d63ffc13e377b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 5
-  _maxHealth: 5
-  _targetUnit: {fileID: 0}
+  _itsShooter: 0
+  _currentState: 0
+  _animator: {fileID: 732951453178373172}
   _distanceToAttack: 3
   _attackPeriod: 1
-  _healthBarPrefab: {fileID: 7384518421972863371, guid: b2ea0da7e8716a04992bf5caea5fb577,
-    type: 3}
-  _animator: {fileID: 732951453178373172}
   _flash: {fileID: 1602197966606650, guid: 639ffe8a2dcaab14fa53988d89810e9d, type: 3}
   _audioSource: {fileID: 128552532376176417}
   _navMeshAgent: {fileID: 128552532449869394}
-  _currentEnemyState: 0
+  _positionKnight: {x: 0, y: 0, z: 0}
+  _health: 5
+  _maxHealth: 5
+  _targetKnight: {fileID: 0}
+  _healthBarPrefab: {fileID: 7384518421972863371, guid: b2ea0da7e8716a04992bf5caea5fb577,
+    type: 3}
   _onDied:
     m_PersistentCalls:
       m_Calls: []
-  _units: []
+  _knight: []
+  _deathEffect: {fileID: 1602197966606650, guid: 639ffe8a2dcaab14fa53988d89810e9d,
+    type: 3}
 --- !u!195 &128552532449869394
 NavMeshAgent:
   m_ObjectHideFlags: 0

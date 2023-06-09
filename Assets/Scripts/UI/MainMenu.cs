@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    private const string CurrentLevel = "_currentLevel";
     private int _currentLevel;
     private int _nextLevel;
 
@@ -17,9 +18,9 @@ public class MainMenu : MonoBehaviour
 
     public void MainMenuLevel()
     {
-        if (PlayerPrefs.HasKey("_currentLevel"))
+        if (PlayerPrefs.HasKey(CurrentLevel))
         {
-            int level = PlayerPrefs.GetInt("_currentLevel");
+            int level = PlayerPrefs.GetInt(CurrentLevel);
             SceneManager.LoadScene(level);
         }
         else

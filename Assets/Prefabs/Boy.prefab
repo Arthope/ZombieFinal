@@ -214,25 +214,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4681fa04ed83ca4fb022f78a608af72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _itsShooter: 0
+  _currentState: 0
+  _animator: {fileID: 5058372200863006479}
+  _distanceToAttack: 2
+  _attackPeriod: 1
+  _flash: {fileID: 0}
+  _audioSource: {fileID: 3808440341391299805}
+  _navMeshAgent: {fileID: 377930161360928175}
+  _positionEnemy: {x: 0, y: 0, z: 0}
+  _targetEnemy: {fileID: 0}
+  _enemyList: []
   _health: 7
   _maxHealth: 7
-  _damageValue: 2
-  _attackDistance: 2
   _healthBarPrefab: {fileID: 7384518421972863371, guid: b2ea0da7e8716a04992bf5caea5fb577,
     type: 3}
-  _flashPrefab: {fileID: 1602197966606650, guid: 639ffe8a2dcaab14fa53988d89810e9d,
+  _deathEffect: {fileID: 1602197966606650, guid: 639ffe8a2dcaab14fa53988d89810e9d,
     type: 3}
   _onDied:
     m_PersistentCalls:
       m_Calls: []
-  _targetEnemy: {fileID: 0}
-  _distanceToAttack: 2
-  _attackPeriod: 1
-  _animator: {fileID: 5058372200863006479}
-  _audioSource: {fileID: 3808440341391299805}
-  _enemyList: []
-  _currentUnitState: 0
-  _navMeshAgent: {fileID: 377930161360928175}
 --- !u!54 &5015353523499287131
 Rigidbody:
   m_ObjectHideFlags: 0

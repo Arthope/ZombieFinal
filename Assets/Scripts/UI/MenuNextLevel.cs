@@ -10,6 +10,9 @@ using Agava.YandexGames.Samples;
 
 public class MenuNextLevel : MonoBehaviour
 {
+    private const string SaveNumberOfCoin = "_saveNumberOfCoin";
+    private const string CurrentLevel = "_currentLevel";
+    private const string LeaderboardName = "Coins";
     [SerializeField] private TextMeshProUGUI _levelText;
     [SerializeField] private CoinDispley _coinDispley;
     private int _menuSceneNumber = 1;
@@ -24,20 +27,20 @@ public class MenuNextLevel : MonoBehaviour
 
     private void Awake()
     {
-        if (PlayerPrefs.HasKey("_saveNumberOfCoin"))
+        if (PlayerPrefs.HasKey(SaveNumberOfCoin))
         {
-            _currentCountCoinsPlayers = PlayerPrefs.GetInt("_saveNumberOfCoin");
+            _currentCountCoinsPlayers = PlayerPrefs.GetInt(SaveNumberOfCoin);
         }
     }
 
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        PlayerPrefs.SetInt("_currentLevel", SceneManager.GetActiveScene().buildIndex);
-        PlayerPrefs.SetInt("_saveNumberOfCoin", _currentCountCoinsPlayers += _rewardLosing);
+        PlayerPrefs.SetInt(CurrentLevel, SceneManager.GetActiveScene().buildIndex);
+        PlayerPrefs.SetInt(SaveNumberOfCoin, _currentCountCoinsPlayers += _rewardLosing);
         if (PlayerAccount.IsAuthorized)
         {
-           Leaderboard.SetScore("Coins", _currentCountCoinsPlayers += _rewardLosing);      
+           Leaderboard.SetScore(LeaderboardName, _currentCountCoinsPlayers += _rewardLosing);      
         }
         PlayerPrefs.Save();
     }
@@ -46,11 +49,11 @@ public class MenuNextLevel : MonoBehaviour
     {
         _nextLevelNumber = SceneManager.GetActiveScene().buildIndex + 1;      
         SceneManager.LoadScene(_nextLevelNumber);
-        PlayerPrefs.SetInt("_currentLevel", _nextLevelNumber);
-        PlayerPrefs.SetInt("_saveNumberOfCoin", _currentCountCoinsPlayers += _rewardWinning);
+        PlayerPrefs.SetInt(CurrentLevel, _nextLevelNumber);
+        PlayerPrefs.SetInt(SaveNumberOfCoin, _currentCountCoinsPlayers += _rewardWinning);
         if (PlayerAccount.IsAuthorized)
         {
-            Leaderboard.SetScore("Coins", _currentCountCoinsPlayers += _rewardWinning);
+            Leaderboard.SetScore(LeaderboardName, _currentCountCoinsPlayers += _rewardWinning);
         }
         if (_nextLevelNumber == _firstAdvScene || _nextLevelNumber == _secondAdvScene || _nextLevelNumber == _thirdAdvScene || _nextLevelNumber == _fourthAdvScene)
         {

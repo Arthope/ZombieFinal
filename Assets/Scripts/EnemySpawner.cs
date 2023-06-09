@@ -37,7 +37,6 @@ public class EnemySpawner : MonoBehaviour
     private void CountDestroyed()
     {
         _onDestroy--;
-        Debug.Log(_onDestroy + " кол во");
         if (_onDestroy == 0)
         {
             UnitsWin();

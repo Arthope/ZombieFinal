@@ -2,31 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
-public enum UnitState
+public class Knight : CharacterMovement
 {
-    Idle,
-    WalkToEnemy,
-    Attack,
-    Die
-}
-
-public class Knight : Unit
-{
+    public override Vector3 Target => _positionEnemy;
+    [SerializeField] private Vector3 _positionEnemy;
     [SerializeField] private Enemy _targetEnemy;
-    [SerializeField] private float _distanceToAttack;
-    [SerializeField] private float _attackPeriod;
-    [SerializeField] private Animator _animator;
-    [SerializeField] private AudioSource _audioSource;
     [SerializeField] private List<Enemy> _enemyList = new List<Enemy>();
-    [SerializeField] private UnitState _currentUnitState;
-    [SerializeField] private NavMeshAgent _navMeshAgent;
-    private float _timer = 0f;
+    [SerializeField] private int _health;
+    [SerializeField] private int _maxHealth;
+    [SerializeField] private GameObject _healthBarPrefab;
+    [SerializeField] private GameObject _deathEffect;
+    [SerializeField] private UnityEvent _onDied;
+    private HealthBar _healthBar;
 
-    public override void Start()
+    public event UnityAction Died
+    {
+        add => _onDied.AddListener(value);
+        remove => _onDied.RemoveListener(value);
+    }
+
+    private void Start()
     {
         base.Start();
-        SetState(UnitState.WalkToEnemy);
+        _maxHealth = _health;
+        GameObject healthBar = Instantiate(_healthBarPrefab);
+        _healthBar = healthBar.GetComponent<HealthBar>();
+        _healthBar.Setup(transform);
+    }
+
+    private void Update()
+    {
+        base.Update();
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -34,6 +42,7 @@ public class Knight : Unit
         if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemyComponent))
         {
             _enemyList.Add(enemyComponent);
+            GetClosest();
         }
     }
 
@@ -42,66 +51,36 @@ public class Knight : Unit
         if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemyComponent))
         {
             _enemyList.Remove(enemyComponent);
+            GetClosest();
         }
     }
 
-
-    void Update()
+    private void OnDestroy()
     {
-        _targetEnemy = GetClosest(transform.position);
-
-        if (_currentUnitState == UnitState.WalkToEnemy)
+        if (_healthBar)
         {
-            if (_targetEnemy)
-            {
-                _targetEnemy = GetClosest(transform.position);
-                _navMeshAgent.SetDestination(_targetEnemy.transform.position);
-                _animator.SetBool("Run", true);
-                float distance = Vector3.Distance(transform.position, _targetEnemy.transform.position);
-                if (distance <= _distanceToAttack)
-                {
-                    SetState(UnitState.Attack);
-                }
-            }
-        }
-        else if (_currentUnitState == UnitState.Attack)
-        {
-            _animator.SetTrigger("Attack");
-            if (_targetEnemy)
-            {
-                _timer += Time.deltaTime;
-                if (_timer > _attackPeriod)
-                {
-                    _timer = 0;
-                    _targetEnemy.TakeDamage(1);
-                    _audioSource.pitch = Random.Range(0.8f, 1.2f);
-                    _audioSource.Play();
-                    if (_targetEnemy = null)
-                    {
-                        _targetEnemy = GetClosest(transform.position);
-                    }
-                }
-            }
+            Destroy(_healthBar.gameObject);
+            _onDied.Invoke();
         }
     }
 
-    public void SetState(UnitState unitState)
+    public  void TakeDamage(int damage)
     {
-        _currentUnitState = unitState;
-        _targetEnemy = GetClosest(transform.position);
-
-        if (_currentUnitState == UnitState.WalkToEnemy)
+        _health -= damage;
+        _healthBar.SetHealth(_health, _maxHealth);
+        if (_health <= 0)
         {
-            if (_targetEnemy)
-            {
-                _targetEnemy = GetClosest(transform.position);
-                _navMeshAgent.SetDestination(_targetEnemy.transform.position);
-
-            }
+            Instantiate(_deathEffect, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
     }
 
-    public Enemy GetClosest(Vector3 point)
+    public override void DoDamage(int damage)
+    {
+        _targetEnemy.TakeDamage(1);
+    }
+
+    public override void GetClosest()
     {
         float minDistance = Mathf.Infinity;
         Enemy closestEnemy = null;
@@ -110,7 +89,7 @@ public class Knight : Unit
         {
             if (go != null)
             {
-                float distance = Vector3.Distance(point, go.transform.position);
+                float distance = Vector3.Distance(transform.position, go.transform.position);
                 if (distance < minDistance)
                 {
                     minDistance = distance;
@@ -118,6 +97,7 @@ public class Knight : Unit
                 }
             }
         }
-        return closestEnemy;
+        _targetEnemy = closestEnemy;
+        _positionEnemy = closestEnemy.transform.position;
     }
 }

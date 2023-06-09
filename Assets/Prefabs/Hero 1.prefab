@@ -1253,10 +1253,10 @@ GameObject:
   m_Component:
   - component: {fileID: 9187676636514975719}
   - component: {fileID: 1858724765091786102}
-  - component: {fileID: 992537405972119769}
   - component: {fileID: 5017348412965106321}
   - component: {fileID: 3744321434670084581}
   - component: {fileID: 8204247181739295654}
+  - component: {fileID: 3376811667263069531}
   m_Layer: 0
   m_Name: Hero 1
   m_TagString: Untagged
@@ -1296,38 +1296,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _objectName: Characters
   _id: 5
---- !u!114 &992537405972119769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7130049162447067254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63ef8232618772d49b5716abb69cd88a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: 7
-  _maxHealth: 7
-  _damageValue: 5
-  _attackDistance: 1000000
-  _healthBarPrefab: {fileID: 7384518421972863371, guid: b2ea0da7e8716a04992bf5caea5fb577,
-    type: 3}
-  _flashPrefab: {fileID: 1602197966606650, guid: 639ffe8a2dcaab14fa53988d89810e9d,
-    type: 3}
-  _onDied:
-    m_PersistentCalls:
-      m_Calls: []
-  _targetEnemy: {fileID: 0}
-  _distanceToAttack: 1000000
-  _attackPeriod: 0.6
-  _animator: {fileID: 5192943003491908480}
-  _audioSource: {fileID: 3147254659904444137}
-  _flash: {fileID: 614246003829293796}
-  _navMeshAgent: {fileID: 5017348412965106321}
-  _enemyList: []
-  _currentUnitState: 0
 --- !u!195 &5017348412965106321
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1379,6 +1347,38 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3376811667263069531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7130049162447067254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4681fa04ed83ca4fb022f78a608af72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itsShooter: 1
+  _currentState: 0
+  _animator: {fileID: 5192943003491908480}
+  _distanceToAttack: 1000
+  _attackPeriod: 2
+  _flash: {fileID: 614246003829293796}
+  _audioSource: {fileID: 3147254659904444137}
+  _navMeshAgent: {fileID: 5017348412965106321}
+  _positionEnemy: {x: 0, y: 0, z: 0}
+  _targetEnemy: {fileID: 0}
+  _enemyList: []
+  _health: 4
+  _maxHealth: 4
+  _healthBarPrefab: {fileID: 7384518421972863371, guid: b2ea0da7e8716a04992bf5caea5fb577,
+    type: 3}
+  _deathEffect: {fileID: 1602197966606650, guid: 639ffe8a2dcaab14fa53988d89810e9d,
+    type: 3}
+  _onDied:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &308308203836276661
 PrefabInstance:
   m_ObjectHideFlags: 0
