@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4616946, g: 0.5124155, b: 0.58993196, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -741,6 +741,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelText: {fileID: 410745212}
   _coinDispley: {fileID: 1406922545}
+  _shop: {fileID: 293883081}
 --- !u!4 &126748891
 Transform:
   m_ObjectHideFlags: 0
@@ -10436,7 +10437,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 120
+  m_text: 170
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11643,8 +11644,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a927478b84e0d14aa8e1087661f4149, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textCoins: {fileID: 655921850}
   _buttonShowAdv: {fileID: 4411477096958999524}
+  _shop: {fileID: 293883081}
 --- !u!224 &7534592848559877889
 RectTransform:
   m_ObjectHideFlags: 0

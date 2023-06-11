@@ -7,6 +7,7 @@ using TMPro;
 
 public class CoinDispley : MonoBehaviour
 {
+    private const string SaveNumberOfCoin = "_saveNumberOfCoin";
     [SerializeField] private TextMeshProUGUI _textCoins;
     [SerializeField] private GameObject _buttonShowAdv;
     [SerializeField] private int _numberOfCoins;
@@ -16,9 +17,9 @@ public class CoinDispley : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.HasKey("_saveNumberOfCoin"))
+        if (PlayerPrefs.HasKey(SaveNumberOfCoin))
         {
-            _numberOfCoins = PlayerPrefs.GetInt("_saveNumberOfCoin");
+            _numberOfCoins = PlayerPrefs.GetInt(SaveNumberOfCoin);
         }
         UpdateCoins();
         transform.parent = null;
@@ -26,6 +27,6 @@ public class CoinDispley : MonoBehaviour
 
     public void UpdateCoins()
     {
-        _textCoins.text = _numberOfCoins.ToString();
+       _textCoins.text = _numberOfCoins.ToString();
     }
 }

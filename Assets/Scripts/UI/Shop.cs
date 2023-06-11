@@ -20,7 +20,7 @@ public class Shop : MonoBehaviour
     [SerializeField] private GameObject _buttonChartersPolice;
     [SerializeField] private GameObject _buttonChartersSolder;
     [SerializeField] private GameObject _buttonChartersHero;
-    private int _priceGirl = 120;
+    private int _priceGirl = 170;
     private int _priceBoy = 240;
     private int _pricePolice = 350;
     private int _priceSolder= 500;
@@ -74,6 +74,7 @@ public class Shop : MonoBehaviour
             PlayerPrefs.SetInt(Characters, numberCharters);
             Destroy(ButtonUnit);
             _currentCountCoinsPlayers = PlayerPrefs.GetInt(SaveNumberOfCoin);
+            PlayerPrefs.SetInt(SaveNumberOfCoin, _currentCountCoinsPlayers);
             PlayerPrefs.Save();
             _textCoins.text = _currentCountCoinsPlayers.ToString();
         }
@@ -81,6 +82,7 @@ public class Shop : MonoBehaviour
 
     public void BueGirl()
     {
+
         if (_currentCountCoinsPlayers >= _priceGirl)
         {
              BueUnit(_priceGirl, _buttonChartersGirl, _numberGirl);
@@ -132,5 +134,13 @@ public class Shop : MonoBehaviour
             Destroy(_buttonChartersHero);
             PlayerPrefs.Save();
         }
-    }  
+    }
+    
+    public void ReceivingAward(int reward)
+    {
+        _currentCountCoinsPlayers += reward;
+        PlayerPrefs.SetInt(SaveNumberOfCoin, _currentCountCoinsPlayers);
+        _textCoins.text = _currentCountCoinsPlayers.ToString();
+        PlayerPrefs.Save();
+    }
 }

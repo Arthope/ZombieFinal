@@ -15,6 +15,7 @@ public class MenuNextLevel : MonoBehaviour
     private const string LeaderboardName = "Coins";
     [SerializeField] private TextMeshProUGUI _levelText;
     [SerializeField] private CoinDispley _coinDispley;
+    [SerializeField] private Shop _shop;
     private int _menuSceneNumber = 1;
     private int _nextLevelNumber;
     private int _rewardWinning = 100;
@@ -25,7 +26,7 @@ public class MenuNextLevel : MonoBehaviour
     private int _fourthAdvScene = 20;
     private int _currentCountCoinsPlayers = 0;
 
-    private void Awake()
+    private void Start()
     {
         if (PlayerPrefs.HasKey(SaveNumberOfCoin))
         {
@@ -37,7 +38,7 @@ public class MenuNextLevel : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         PlayerPrefs.SetInt(CurrentLevel, SceneManager.GetActiveScene().buildIndex);
-        PlayerPrefs.SetInt(SaveNumberOfCoin, _currentCountCoinsPlayers += _rewardLosing);
+        _shop.ReceivingAward(_rewardLosing);
         if (PlayerAccount.IsAuthorized)
         {
            Leaderboard.SetScore(LeaderboardName, _currentCountCoinsPlayers += _rewardLosing);      
@@ -48,9 +49,9 @@ public class MenuNextLevel : MonoBehaviour
     public void NextLevel()
     {
         _nextLevelNumber = SceneManager.GetActiveScene().buildIndex + 1;      
-        SceneManager.LoadScene(_nextLevelNumber);
         PlayerPrefs.SetInt(CurrentLevel, _nextLevelNumber);
-        PlayerPrefs.SetInt(SaveNumberOfCoin, _currentCountCoinsPlayers += _rewardWinning);
+        _shop.ReceivingAward(_rewardWinning);
+        SceneManager.LoadScene(_nextLevelNumber);
         if (PlayerAccount.IsAuthorized)
         {
             Leaderboard.SetScore(LeaderboardName, _currentCountCoinsPlayers += _rewardWinning);
