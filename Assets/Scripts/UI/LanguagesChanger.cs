@@ -7,7 +7,6 @@ public class LanguagesChanger : MonoBehaviour
 {
     [SerializeField] private LeanLocalization _leanLocalization;
 
-#if YANDEX_GAMES
     private IEnumerator Start()
     {
         DontDestroyOnLoad(_leanLocalization.gameObject);
@@ -38,7 +37,7 @@ public class LanguagesChanger : MonoBehaviour
                 break;
         }
     }
-#endif
+
 
 #if VK_GAMES
     private void Start()

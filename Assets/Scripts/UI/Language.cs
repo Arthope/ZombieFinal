@@ -4,23 +4,36 @@ using UnityEngine;
 using System.Runtime.InteropServices;
 using TMPro;
 using Agava.YandexGames;
+using Lean.Localization;
+
 
 public class Language : MonoBehaviour
-{   
-    public static Language Instance;
-    public string CurrentLanguage;
-
-    private void Awake()
+{
+    [SerializeField] private LeanLocalization _leanLocalization;
+    private string _language;
+ 
+    private void Start()
     {
-        if (Instance == null)
+        LoadLocalization();
+    }
+
+    private void LoadLocalization()
+    {
+        _language = PlayerPrefs.GetString("_currentLanguage");
+        switch (_language)
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-            CurrentLanguage = YandexGamesSdk.Environment.i18n.lang;
-        }
-        else
-        {
-            Destroy(gameObject);
+            case "ru":
+                _leanLocalization.SetCurrentLanguage("Russian");
+                break;
+            case "tr":
+                _leanLocalization.SetCurrentLanguage("Turkish");
+                break;
+            case "en":
+                _leanLocalization.SetCurrentLanguage("English");
+                break;
+            default:
+                _leanLocalization.SetCurrentLanguage("Russian");
+                break;
         }
     }
 }

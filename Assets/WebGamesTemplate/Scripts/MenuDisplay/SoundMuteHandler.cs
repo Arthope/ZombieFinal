@@ -77,7 +77,7 @@ public class SoundMuteHandler : MonoBehaviour
         }
     }
 
-    private void OnVideoClosed()
+    public void OnVideoClosed()
     {
         if (!_isSoundMute)
         {
@@ -85,7 +85,7 @@ public class SoundMuteHandler : MonoBehaviour
         }
     }
 
-    private void OnVideoOpened()
+    public void OnVideoOpened()
     {
         DisableSound();
     }

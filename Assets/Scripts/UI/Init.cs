@@ -8,6 +8,7 @@ using Agava.YandexGames.Samples;
 
 public class Init : MonoBehaviour
 {
+ //   [SerializeField] private string _currentLanguage;
    private int _menuSceneNumber = 1;
    
    private void Awake()
@@ -17,11 +18,12 @@ public class Init : MonoBehaviour
 
    private IEnumerator Start()
    {     
-       yield return Agava.YandexGames.YandexGamesSdk.Initialize(OnInitialized);
+        yield return Agava.YandexGames.YandexGamesSdk.Initialize(OnInitialized);
    }
 
    private void OnInitialized()
    {
+        PlayerPrefs.SetString("_currentLanguage", YandexGamesSdk.Environment.i18n.lang);
        SceneManager.LoadScene(_menuSceneNumber);
    }
 }
