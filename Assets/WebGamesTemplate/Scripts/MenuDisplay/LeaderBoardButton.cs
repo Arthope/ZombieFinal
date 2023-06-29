@@ -1,4 +1,5 @@
 using System;
+using Agava.YandexGames;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,9 +41,16 @@ public class LeaderBoardButton : MonoBehaviour
 
     private void Show()
     {
-        _leaderBoardDisplay.gameObject.SetActive(true);
-        _leaderBoardDisplay.SetLeaderboardScore();
-        _leaderBoardDisplay.OpenYandexLeaderboard();
+        if (PlayerAccount.IsAuthorized)
+        {
+            _leaderBoardDisplay.gameObject.SetActive(true);
+            _leaderBoardDisplay.SetLeaderboardScore();
+            _leaderBoardDisplay.OpenYandexLeaderboard();
+        }
+        if (!PlayerAccount.IsAuthorized)
+        {
+            PlayerAccount.Authorize();
+        }
     }
 
     private void Hide()

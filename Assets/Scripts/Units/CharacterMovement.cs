@@ -23,6 +23,9 @@ public abstract class CharacterMovement : MonoBehaviour
     [SerializeField] private GameObject _flash;
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private UnityEngine.AI.NavMeshAgent _navMeshAgent;
+    private int _damage = 1;
+    private float _minimalAudioPitch = 0.8f;
+    private float _maximalAudioPitch = 1.2f;
     private float _timer = 0f;
 
     public void Start()
@@ -62,8 +65,8 @@ public abstract class CharacterMovement : MonoBehaviour
                 if (_timer > _attackPeriod)
                 {
                     _timer = 0;
-                    DoDamage(1);
-                    _audioSource.pitch = Random.Range(0.8f, 1.2f);
+                    DoDamage(_damage);
+                    _audioSource.pitch = Random.Range(_minimalAudioPitch, _maximalAudioPitch);
                     _audioSource.Play();
                     if (_itsShooter = true)
                     {

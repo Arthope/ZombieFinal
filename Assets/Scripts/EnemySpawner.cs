@@ -15,6 +15,9 @@ public class EnemySpawner : MonoBehaviour
     private float _coordinateY = 0f;
     private float _coordinateMinimalZ = -2f;
     private float _coordinateMaximalZ = 2f;
+    private float _coordinateRotationX = 0f;
+    private float _coordinateRotationY = 180f;
+    private float _coordinateRotationZ = 0f;
     private int _onDestroy;
 
     private void Start()
@@ -27,7 +30,7 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < _numberEnemy; i++)
         {
             Vector3 _position = new Vector3(Random.Range(_coordinateMinimalX, _coordinateMaximalX), _coordinateY, Random.Range(_coordinateMaximalZ, _coordinateMinimalZ));
-            transform.rotation = Quaternion.Euler(0f, -180f, 0f) * transform.rotation;
+            transform.rotation = Quaternion.Euler(_coordinateRotationX, _coordinateRotationY, _coordinateRotationZ) * transform.rotation;
             Enemy newEnemy = Instantiate(_enemyPrefab, _position, transform.rotation);
             newEnemy.DiedEnemy += CountDestroyed;
             EnemyList.Add(newEnemy);
