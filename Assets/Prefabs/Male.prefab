@@ -205,7 +205,7 @@ MonoBehaviour:
   _animator: {fileID: 5582537313441749153}
   _distanceToAttack: 2
   _attackPeriod: 1
-  _flash: {fileID: 0}
+  _flash: {fileID: 1602197966606650, guid: 639ffe8a2dcaab14fa53988d89810e9d, type: 3}
   _audioSource: {fileID: 1332982316419580703}
   _navMeshAgent: {fileID: 3035579857477686939}
   _positionEnemy: {x: 0, y: 0, z: 0}

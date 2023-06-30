@@ -11,6 +11,7 @@ public class LeaderBoardButton : MonoBehaviour
     [SerializeField] private Button _button;
     [SerializeField] private LeaderBoardDisplay _leaderBoardDisplay;
     [SerializeField] private Button _closeButton;
+    [SerializeField] private GameObject _canvasAutorization;
 
     private void OnEnable()
     {
@@ -49,7 +50,7 @@ public class LeaderBoardButton : MonoBehaviour
         }
         if (!PlayerAccount.IsAuthorized)
         {
-            PlayerAccount.Authorize();
+            _canvasAutorization.gameObject.SetActive(true);
         }
     }
 

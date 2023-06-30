@@ -50,8 +50,8 @@ public class Knight : CharacterMovement
     {
         if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemyComponent))
         {
-            _enemyList.Remove(enemyComponent);
-            GetClosest();
+           _enemyList.Remove(enemyComponent);          
+           GetClosest();          
         }
     }
 

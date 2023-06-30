@@ -50,8 +50,8 @@ public class Enemy : CharacterMovement
     {
         if (collider.gameObject.TryGetComponent<Knight>(out Knight unitComponent))
         {
-            _knight.Remove(unitComponent);
-            GetClosest();
+            _knight.Remove(unitComponent);         
+            GetClosest();                          
         }
     }
 
@@ -100,5 +100,6 @@ public class Enemy : CharacterMovement
         }
         _targetKnight = closestUnit;
         _positionKnight = closestUnit.transform.position;
+
     }
 }

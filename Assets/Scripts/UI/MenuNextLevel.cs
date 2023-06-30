@@ -16,6 +16,7 @@ public class MenuNextLevel : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _levelText;
     [SerializeField] private CoinDispley _coinDispley;
     [SerializeField] private Shop _shop;
+    [SerializeField] private SoundMuteHandler _soundMuteHandler;
     private int _menuSceneNumber = 1;
     private int _nextLevelNumber;
     private int _rewardWinning = 100;
@@ -58,13 +59,29 @@ public class MenuNextLevel : MonoBehaviour
         }
         if (_nextLevelNumber == _firstAdvScene || _nextLevelNumber == _secondAdvScene || _nextLevelNumber == _thirdAdvScene || _nextLevelNumber == _fourthAdvScene)
         {
-            Agava.YandexGames.InterstitialAd.Show();
+            ShowAdv();
         }
         PlayerPrefs.Save();       
     }
-
+  
     public void Menu()
     {
         SceneManager.LoadScene(_menuSceneNumber);
     }
+
+    public void ShowAdv()
+    {
+        Agava.YandexGames.VideoAd.Show(Open, Close);
+    }
+
+    private void Open()
+    {
+        _soundMuteHandler.OnVideoOpened();
+    }
+
+    private void Close()
+    {
+        _soundMuteHandler.OnVideoClosed();
+    }
+
 }

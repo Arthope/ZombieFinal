@@ -180,7 +180,7 @@ MonoBehaviour:
   _itsShooter: 0
   _currentState: 0
   _animator: {fileID: 732951453178373172}
-  _distanceToAttack: 3
+  _distanceToAttack: 2
   _attackPeriod: 1
   _flash: {fileID: 1602197966606650, guid: 639ffe8a2dcaab14fa53988d89810e9d, type: 3}
   _audioSource: {fileID: 128552532376176417}

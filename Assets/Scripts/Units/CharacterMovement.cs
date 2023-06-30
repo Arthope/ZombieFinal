@@ -35,7 +35,7 @@ public abstract class CharacterMovement : MonoBehaviour
 
     public void Update()
     {
-       GetClosest();
+        GetClosest();
         if (_currentState == State.Walk)
         {
             if (Target != Vector3.zero)
