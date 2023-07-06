@@ -22,10 +22,10 @@ public class MenuNextLevel : MonoBehaviour
     private int _nextLevelNumber;
     private int _rewardWinning = 100;
     private int _rewardLosing = 10;
-    private int _firstAdvScene = 5;
-    private int _secondAdvScene = 10;
-    private int _thirdAdvScene = 15;
-    private int _fourthAdvScene = 20;
+    private int _firstAdvScene = 2;
+    private int _secondAdvScene = 3;
+    private int _thirdAdvScene = 5;
+    private int _fourthAdvScene = 7;
     private int _currentCountCoinsPlayers = 0;
 
     private void Start()
@@ -75,7 +75,7 @@ public class MenuNextLevel : MonoBehaviour
         Agava.YandexGames.InterstitialAd.Show(Open, Close);
     }
 
-    private void Close(bool close)
+    private void Close(bool obj)
     {
         _soundMuteHandler.OnVideoClosed();
     }

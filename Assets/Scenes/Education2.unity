@@ -9725,7 +9725,7 @@ MonoBehaviour:
     Text: Autorization
     Object: {fileID: 0}
   - Language: Russian
-    Text: "\u0410\u0432\u0442\u043E\u0440\u0438\u0437\u0432\u0430\u0442\u044C\u0441\u044F"
+    Text: "\u0410\u0432\u0442\u043E\u0440\u0438\u0437\u043E\u0432\u0430\u0442\u044C\u0441\u044F"
     Object: {fileID: 0}
 --- !u!4 &1294299782 stripped
 Transform:
@@ -13118,7 +13118,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 6.0005493, y: -30}
+  m_AnchoredPosition: {x: 6.0004883, y: -30}
   m_SizeDelta: {x: 198.2251, y: 320}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &1912461743

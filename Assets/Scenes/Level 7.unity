@@ -7286,7 +7286,7 @@ MonoBehaviour:
     Text: Autorization
     Object: {fileID: 0}
   - Language: Russian
-    Text: "\u0410\u0432\u0442\u043E\u0440\u0438\u0437\u0432\u0430\u0442\u044C\u0441\u044F"
+    Text: "\u0410\u0432\u0442\u043E\u0440\u0438\u0437\u043E\u0432\u0430\u0442\u044C\u0441\u044F"
     Object: {fileID: 0}
 --- !u!1 &1926403337
 GameObject:
