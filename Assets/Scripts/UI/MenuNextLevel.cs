@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using Agava.YandexGames;
 using Agava.YandexGames.Samples;
+using System;
 
 public class MenuNextLevel : MonoBehaviour
 {
@@ -59,7 +60,7 @@ public class MenuNextLevel : MonoBehaviour
         }
         if (_nextLevelNumber == _firstAdvScene || _nextLevelNumber == _secondAdvScene || _nextLevelNumber == _thirdAdvScene || _nextLevelNumber == _fourthAdvScene)
         {
-            ShowAdv();
+              ShowAdv();      
         }
         PlayerPrefs.Save();       
     }
@@ -70,18 +71,18 @@ public class MenuNextLevel : MonoBehaviour
     }
 
     public void ShowAdv()
+    {      
+        Agava.YandexGames.InterstitialAd.Show(Open, Close);
+    }
+
+    private void Close(bool close)
     {
-        Agava.YandexGames.VideoAd.Show(Open, Close);
+        _soundMuteHandler.OnVideoClosed();
     }
 
     private void Open()
     {
         _soundMuteHandler.OnVideoOpened();
-    }
 
-    private void Close()
-    {
-        _soundMuteHandler.OnVideoClosed();
     }
-
 }

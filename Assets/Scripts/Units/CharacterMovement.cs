@@ -35,23 +35,33 @@ public abstract class CharacterMovement : MonoBehaviour
 
     public void Update()
     {
-        GetClosest();
+        if (Target != null)
+        {
+            GetClosest();
+        }
+       
         if (_currentState == State.Walk)
         {
             if (Target != Vector3.zero)
             {
                 _navMeshAgent.SetDestination(Target);
                 _animator.SetBool(StateRun, true);
-                GetClosest();
                 float distance = Vector3.Distance(transform.position, Target);
                 if (distance <= _distanceToAttack)
                 {
                     SetState(State.Attack);
                 }
+
+                if (Target == null)
+                {
+                    _currentState = State.Idle;
+
+                }
             }
         }
         else if (_currentState == State.Attack)
         {
+        
             if (_itsShooter = true)
             {
                 transform.LookAt(Target);
@@ -73,13 +83,12 @@ public abstract class CharacterMovement : MonoBehaviour
                         _flash.SetActive(true);
                         Invoke("HideFlash", 0.08f);
                     }
-
-                    if (Target != Vector3.zero)
-                    {
-                        GetClosest();
-                    }
                 }
             }
+        }
+        else if (_currentState == State.Idle)
+        {
+            _animator.SetBool(StateRun, true);
         }
     }
 
@@ -91,6 +100,7 @@ public abstract class CharacterMovement : MonoBehaviour
         {
             if (Target != Vector3.zero)
             {
+                GetClosest();
                 _navMeshAgent.SetDestination(Target);
             }
         }

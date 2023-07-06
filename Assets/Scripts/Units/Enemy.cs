@@ -42,7 +42,6 @@ public class Enemy : CharacterMovement
         if (collider.gameObject.TryGetComponent<Knight>(out Knight unitComponent))
         {
             _knight.Add(unitComponent);
-            GetClosest();
         }
     }
 
@@ -50,8 +49,7 @@ public class Enemy : CharacterMovement
     {
         if (collider.gameObject.TryGetComponent<Knight>(out Knight unitComponent))
         {
-            _knight.Remove(unitComponent);         
-            GetClosest();                          
+            _knight.Remove(unitComponent);                                 
         }
     }
 
@@ -75,7 +73,6 @@ public class Enemy : CharacterMovement
         }
     }
 
-
     public override void DoDamage(int damage)
     {
         _targetKnight.TakeDamage(1);
@@ -98,8 +95,10 @@ public class Enemy : CharacterMovement
                 }
             }
         }
-        _targetKnight = closestUnit;
-        _positionKnight = closestUnit.transform.position;
-
+        if (closestUnit != null)
+        {
+            _targetKnight = closestUnit;
+            _positionKnight = closestUnit.transform.position;
+        }
     }
 }

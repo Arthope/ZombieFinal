@@ -42,7 +42,6 @@ public class Knight : CharacterMovement
         if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemyComponent))
         {
             _enemyList.Add(enemyComponent);
-            GetClosest();
         }
     }
 
@@ -50,8 +49,7 @@ public class Knight : CharacterMovement
     {
         if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemyComponent))
         {
-           _enemyList.Remove(enemyComponent);          
-           GetClosest();          
+           _enemyList.Remove(enemyComponent);                              
         }
     }
 
@@ -93,11 +91,14 @@ public class Knight : CharacterMovement
                 if (distance < minDistance)
                 {
                     minDistance = distance;
-                    closestEnemy = go;
+                    closestEnemy = go;                  
                 }
             }
         }
-        _targetEnemy = closestEnemy;
-        _positionEnemy = closestEnemy.transform.position;
+        if (closestEnemy != null)
+        {
+            _targetEnemy = closestEnemy;
+            _positionEnemy = closestEnemy.transform.position;
+        }       
     }
 }
