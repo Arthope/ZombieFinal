@@ -50,6 +50,7 @@ public class MenuNextLevel : MonoBehaviour
 
     public void NextLevel()
     {
+        ShowAdv();
         _nextLevelNumber = SceneManager.GetActiveScene().buildIndex + 1;      
         PlayerPrefs.SetInt(CurrentLevel, _nextLevelNumber);
         _shop.ReceivingAward(_rewardWinning);
@@ -58,10 +59,7 @@ public class MenuNextLevel : MonoBehaviour
         {
             Leaderboard.SetScore(LeaderboardName, _currentCountCoinsPlayers += _rewardWinning);
         }
-        if (_nextLevelNumber == _firstAdvScene || _nextLevelNumber == _secondAdvScene || _nextLevelNumber == _thirdAdvScene || _nextLevelNumber == _fourthAdvScene)
-        {
-              ShowAdv();      
-        }
+       
         PlayerPrefs.Save();       
     }
   
@@ -75,9 +73,12 @@ public class MenuNextLevel : MonoBehaviour
         Agava.YandexGames.InterstitialAd.Show(Open, Close);
     }
 
-    private void Close(bool obj)
+    private void Close(bool close)
     {
-        _soundMuteHandler.OnVideoClosed();
+        if (close)
+        {
+            _soundMuteHandler.OnVideoClosed();
+        }
     }
 
     private void Open()

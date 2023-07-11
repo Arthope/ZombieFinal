@@ -4186,8 +4186,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d05da21a971fc8b4e8917e00f195787d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _en: 7 level
-  _ru: "7 \u0443\u0440\u043E\u0432\u0435\u043D\u044C"
 --- !u!114 &1078810466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10699,8 +10697,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d05da21a971fc8b4e8917e00f195787d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _en: Exit
-  _ru: "\u0412\u044B\u0445\u043E\u0434"
 --- !u!114 &2784161545184549834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11002,8 +10998,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d05da21a971fc8b4e8917e00f195787d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _en: Exit
-  _ru: "\u0412\u044B\u0445\u043E\u0434"
 --- !u!114 &3181734832361578312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12492,8 +12486,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d05da21a971fc8b4e8917e00f195787d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _en: Game over!
-  _ru: "\u0412\u044B \u043F\u0440\u043E\u0438\u0433\u0440\u0430\u043B\u0438!"
 --- !u!114 &5056510543558047847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12919,8 +12911,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d05da21a971fc8b4e8917e00f195787d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _en: Restart
-  _ru: "\u0420\u0435\u0441\u0442\u0430\u0440\u0442"
 --- !u!114 &5444804336757974717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13527,8 +13517,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d05da21a971fc8b4e8917e00f195787d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _en: You Win!
-  _ru: "\u0412\u044B \u043F\u043E\u0431\u0435\u0434\u0438\u043B\u0438!"
 --- !u!114 &5547609259783651119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14041,8 +14029,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d05da21a971fc8b4e8917e00f195787d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _en: Roll
-  _ru: "\u0411\u0440\u043E\u0441\u0438\u0442\u044C \u043A\u0443\u0431\u0438\u043A"
 --- !u!114 &6355987605414995552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14202,8 +14188,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d05da21a971fc8b4e8917e00f195787d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _en: Next
-  _ru: "\u0414\u0430\u043B\u0435\u0435"
 --- !u!114 &6552656763065157784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14912,8 +14896,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d05da21a971fc8b4e8917e00f195787d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _en: Free
-  _ru: "\u0411\u0435\u0441\u043F\u043B\u0430\u0442\u043D\u043E"
 --- !u!222 &7433942014952970261
 CanvasRenderer:
   m_ObjectHideFlags: 0
