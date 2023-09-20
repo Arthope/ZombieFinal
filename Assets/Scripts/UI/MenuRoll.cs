@@ -7,6 +7,7 @@ public class MenuRoll : MonoBehaviour
     [SerializeField] private GameObject _menuButton;
     [SerializeField] private GameObject _menuWindow;
     [SerializeField] private GameObject _rollButton;
+    [SerializeField] private GameObject _levelText;
 
     public MonoBehaviour[] ComponentsToDisable;
 
@@ -43,5 +44,10 @@ public class MenuRoll : MonoBehaviour
     {
         _rollButton.SetActive(true);
         _menuButton.SetActive(false);
+    }
+
+    public void OpenLevelText()
+    {
+        _levelText.SetActive(true);
     }
 }

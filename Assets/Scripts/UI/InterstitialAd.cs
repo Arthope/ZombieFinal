@@ -8,9 +8,19 @@ public class InterstitialAd : MonoBehaviour
 {
     [SerializeField] private SoundMuteHandler _soundMuteHandler;
 
-    private void Start()
+    private void Awake()
     {
         ShowAdv();
+    }
+
+    private void OnEnable()
+    {
+        Application.focusChanged += ApplicationFocusChanged;
+    }
+
+    private void OnDisable()
+    {
+        Application.focusChanged -= ApplicationFocusChanged;
     }
 
     public void ShowAdv()
@@ -28,7 +38,15 @@ public class InterstitialAd : MonoBehaviour
 
     private void Open()
     {
-        _soundMuteHandler.OnVideoOpened();
+       _soundMuteHandler.OnVideoOpened();         
 
+    }
+        
+    private void ApplicationFocusChanged(bool Focus)
+    {
+        if (Focus == true)
+        {
+            _soundMuteHandler.OnVideoOpened();
+        }
     }
 }

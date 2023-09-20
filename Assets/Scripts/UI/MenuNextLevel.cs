@@ -46,7 +46,12 @@ public class MenuNextLevel : MonoBehaviour
 
     public void NextLevel()
     {
-        _nextLevelNumber = SceneManager.GetActiveScene().buildIndex + 1;      
+        _nextLevelNumber = SceneManager.GetActiveScene().buildIndex + 1;
+        if (_nextLevelNumber == 23)
+        {
+            _nextLevelNumber = SceneManager.GetActiveScene().buildIndex;
+        }
+
         PlayerPrefs.SetInt(CurrentLevel, _nextLevelNumber);
         _shop.ReceivingAward(_rewardWinning);
         SceneManager.LoadScene(_nextLevelNumber);
