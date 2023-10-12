@@ -518,12 +518,18 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 75860009}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 75860011}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a8be4f34a7b1eb24db8e8e892c757ab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &75860011 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8874680765910382517, guid: 258ff4f3f62cb7b4f99f86639e5aa988,
+    type: 3}
+  m_PrefabInstance: {fileID: 75860009}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &126748889
 GameObject:
   m_ObjectHideFlags: 0
@@ -2325,6 +2331,8 @@ MonoBehaviour:
   _buttonShowAdv: {fileID: 4411477096958999524}
   _shop: {fileID: 293883081}
   _soundMuteHandler: {fileID: 75860010}
+  _soundButton: {fileID: 75860011}
+  _buttonAd: {fileID: 8390601504080870824}
 --- !u!1001 &646370385
 PrefabInstance:
   m_ObjectHideFlags: 0

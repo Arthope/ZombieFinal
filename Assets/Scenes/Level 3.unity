@@ -1709,12 +1709,18 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 372874212}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 372874214}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a8be4f34a7b1eb24db8e8e892c757ab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &372874214 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8874680765910382517, guid: 258ff4f3f62cb7b4f99f86639e5aa988,
+    type: 3}
+  m_PrefabInstance: {fileID: 372874212}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &398236885
 GameObject:
   m_ObjectHideFlags: 0
@@ -13719,7 +13725,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 11.000061, y: -46}
+  m_AnchoredPosition: {x: 11, y: -46}
   m_SizeDelta: {x: 198.2251, y: 320}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &7513031717525508856
@@ -13737,6 +13743,8 @@ MonoBehaviour:
   _buttonShowAdv: {fileID: 4411477096958999524}
   _shop: {fileID: 293883081}
   _soundMuteHandler: {fileID: 372874213}
+  _soundButton: {fileID: 372874214}
+  _buttonAd: {fileID: 8390601504080870824}
 --- !u!224 &7534592848559877889
 RectTransform:
   m_ObjectHideFlags: 0

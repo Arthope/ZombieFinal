@@ -99,8 +99,6 @@ public class SoundMuteHandler : MonoBehaviour
     {
         _isOpen = true;
         DisableSound();
-        
-  
     }
 
     private void Application_focusChanged(bool obj)
